@@ -1,0 +1,35 @@
+{
+  "name": "simple-db-model",
+  "version": "1.0.0",
+  "description": "SimpleDBModel is a NodeJS library for manipulating MongoDB with Mongoose",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monotter/SimpleDBModel"
+  },
+  "author": {
+    "name": "Monotter",
+    "url": "https://github.com/monotter"
+  },
+  "bugs": {
+    "url": "https://github.com/monotter/SimpleDBModel/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "database",
+    "model",
+    "dbmodel",
+    "easydb",
+    "mongo",
+    "db",
+    "nosql",
+    "query",
+    "data",
+    "datastore",
+    "schema",
+    "model",
+    "document"
+  ]
+}
