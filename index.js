@@ -22,10 +22,10 @@ class DBModel {
     constructor(CollectionName, schema, mongoose) {
         this.schemaModel = mongoose.model(CollectionName, new mongoose.Schema(schema,{versionKey: false}))
     }
-    select(filters, {multiple = true, limit, sort, skip, select} = {}){
+    select(filters, {multiple = true, limit, sort, skip, select, populate} = {}){
         const model = this.schemaModel
         return middleware(filters,(filter,{resolve,reject})=>{
-            model[multiple?"find":"findOne"](filter).limit(limit).skip(skip).select(select).sort(sort).exec((err, response)=>{
+            model[multiple?"find":"findOne"](filter).select(select).skip(skip).limit(limit).sort(sort).populate(populate).exec((err, response)=>{
                 if(err) reject(err)
                 else resolve(response)
             })

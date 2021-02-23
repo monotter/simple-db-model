@@ -76,19 +76,20 @@ await ExampleModel.update({ ExampleData1: "Hello", ExampleData2:100 }, { multipl
 await ExampleModel.delete({ ExampleData1: "Hello", ExampleData2:100 }, { multiple: false })
 ```
 
-### Limit, Skip, Sort and Select
+### Limit, Skip, Sort, Populate and Select
 ```js
 await ExampleModel.select(undefined, { limit: 5 })
 await ExampleModel.select(undefined, { skip: 2 })
 await ExampleModel.select(undefined, { sort: { ExampleData2: "descending" }})
 await ExampleModel.select(undefined, { select: [ "ExampleData1" ] })
+await ExampleModel.select(undefined, { populate: "ObjectIDField" })
 
-await ExampleModel.select(undefined, { limit: 5, skip: 2, sort: { ExampleData2: "descending" }, select: [ "ExampleData1" ] })
+await ExampleModel.select(undefined, { limit: 5, skip: 2, populate:["ExampleData1", "ExampleData2"], sort: { ExampleData2: "descending" }, select: [ "ExampleData1" ] })
 ```
 
 ### Structure
 ```
-[async] <Model>.select(<filter[object]|filters[array of objects]>, { multiple[default: true], limit, sort, skip, select } = {})
+[async] <Model>.select(<filter[object]|filters[array of objects]>, { multiple[default: true], limit, sort, skip, select, populate } = {})
 [async] <Model>.insert(<property[object]|properties[array of objects]>)
 [async] <Model>.update(<filter[object]>, <property[object]>, { multiple[default: true] } = {})
 [async] <Model>.delete(<filter[object]|filters[array of objects]>, { multiple[default: true] } = {})
