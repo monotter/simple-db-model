@@ -4,6 +4,9 @@ function middleware(data,func){
             const promises = []
             data.forEach(mindata => {
                 promises.push(new Promise((resolve,reject)=>{
+                    Object.keys(mindata).forEach((d)=>{
+                        mindata[d]===undefined && delete mindata[d]
+                    })
                     func(mindata,{resolve,reject})
                 }))
             })
@@ -14,6 +17,9 @@ function middleware(data,func){
             })
         }
         else{
+            Object.keys(data).forEach((d)=>{
+                data[d]===undefined && delete data[d]
+            })
             func(data,{resolve,reject})
         }
     })
