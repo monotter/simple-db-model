@@ -28,15 +28,15 @@ class DBModel {
     constructor() {
         switch (arguments.length) {
             case 1:
-                let [schemaModel] = arguments
+                var [schemaModel] = arguments
                 this.schemaModel = schemaModel
                 break;
             case 2:
-                let [CollectionName, schema] = arguments
+                var [CollectionName, schema] = arguments
                 this.schemaModel = mongoose.model(CollectionName, schema, CollectionName)
                 break;
             case 3:
-                let [CollectionName, schema, mongoose] = arguments
+                var [CollectionName, schema, mongoose] = arguments
                 this.schemaModel = mongoose.model(CollectionName, new mongoose.Schema(schema,{versionKey: false}), CollectionName)
                 break;
         }
