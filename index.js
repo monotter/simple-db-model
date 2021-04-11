@@ -25,14 +25,21 @@ function middleware(data,func){
     })
 }
 class DBModel {
-    constructor(schemaModel) {
-        this.schemaModel = schemaModel
-    }
-    constructor(CollectionName, schema) {
-        this.schemaModel = mongoose.model(CollectionName, schema,CollectionName)
-    }
-    constructor(CollectionName, schema, mongoose) {
-        this.schemaModel = mongoose.model(CollectionName, new mongoose.Schema(schema,{versionKey: false}),CollectionName)
+    constructor() {
+        switch (arguments.length) {
+            case 1:
+                const [schemaModel] = arguments
+                this.schemaModel = schemaModel
+                break;
+            case 2:
+                const [CollectionName, schema] = arguments
+                this.schemaModel = mongoose.model(CollectionName, schema,CollectionName)
+                break;
+            case 3:
+                const [CollectionName, schema, mongoose] = arguments
+                this.schemaModel = mongoose.model(CollectionName, new mongoose.Schema(schema,{versionKey: false}),CollectionName)
+                break;
+        }
     }
     select(filters, {multiple = true, limit, sort, skip, select, populate} = {}){
         const model = this.schemaModel
