@@ -25,8 +25,14 @@ function middleware(data,func){
     })
 }
 class DBModel {
+    constructor(schemaModel) {
+        this.schemaModel = schemaModel
+    }
+    constructor(CollectionName, schema) {
+        this.schemaModel = mongoose.model(CollectionName, schema,CollectionName)
+    }
     constructor(CollectionName, schema, mongoose) {
-        this.schemaModel = mongoose.model(CollectionName, new mongoose.Schema(schema,{versionKey: false}))
+        this.schemaModel = mongoose.model(CollectionName, new mongoose.Schema(schema,{versionKey: false}),CollectionName)
     }
     select(filters, {multiple = true, limit, sort, skip, select, populate} = {}){
         const model = this.schemaModel

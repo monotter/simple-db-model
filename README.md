@@ -55,7 +55,18 @@ await PersonModel.delete({Age:{$gt:17}})
 This part of code finds documents on `Person` collection which is `Age` property more than `17` and deletes them.
 
 ## Mesh Examples
+### Defining Styles
+```js
+const scheme = {
+    ExampleData1: String,
+    ExampleData2: Number
+}
+const mongooseSchema = new mongoose.Schema(schema,{versionKey: false})
+const mongooseModel = mongoose.model(CollectionName, mongooseSchema, CollectionName)
 
+const ExampleModel = new DBModel("Person",mongooseSchema)
+const ExampleModel = new DBModel(mongooseModel)
+```
 ### Collections
 ```js
 var collection = [
