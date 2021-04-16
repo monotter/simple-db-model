@@ -41,7 +41,7 @@ class DBModel {
                 break;
         }
     }
-    select(filters, {multiple = true, limit, sort, skip, select, populate} = {}){
+    select(filters = {}, {multiple = true, limit, sort, skip, select, populate} = {multiple = true}){
         const model = this.schemaModel
         return middleware(filters,(filter,{resolve,reject})=>{
             model[multiple?"find":"findOne"](filter).select(select).skip(skip).limit(limit).sort(sort).populate(populate).exec((err, response)=>{
@@ -50,7 +50,7 @@ class DBModel {
             })
         })
     }
-    insert(properties){
+    insert(properties={}){
         const model = this.schemaModel
         return middleware(properties,(property,{resolve,reject})=>{
             new model(property).save((err, response)=>{
@@ -59,7 +59,7 @@ class DBModel {
             })
         })
     }
-    update(filter,property,{multiple = true} = {}){
+    update(filter={},property={},{multiple = true} = {multiple = true}){
         const model = this.schemaModel
         return new Promise((resolve, reject)=>{
             model[multiple?"updateMany":"updateOne"](filter,property,(err, response)=>{
@@ -68,7 +68,7 @@ class DBModel {
             })
         })
     }
-    delete(filters,{multiple = true} = {}){
+    delete(filters={},{multiple = true} = {multiple = true}){
         const model = this.schemaModel
         return middleware(filters,(filter,{resolve,reject})=>{
             model[multiple?"deleteMany":"deleteOne"](filter,(err, response)=>{
@@ -77,7 +77,7 @@ class DBModel {
             })
         })
     }
-    count(filters){
+    count(filters={}){
         const model = this.schemaModel
         return middleware(filters,(filter,{resolve,reject})=>{
             model.countDocuments(filter,(err, response)=>{
