@@ -41,7 +41,7 @@ class DBModel {
                 break;
         }
     }
-    select(filters = {}, {multiple = true, limit, sort, skip, select, populate} = {multiple = true}){
+    select(filters = {}, {multiple = true, limit, sort, skip, select, populate} = {}){
         const model = this.schemaModel
         return middleware(filters,(filter,{resolve,reject})=>{
             model[multiple?"find":"findOne"](filter).select(select).skip(skip).limit(limit).sort(sort).populate(populate).exec((err, response)=>{
@@ -59,7 +59,7 @@ class DBModel {
             })
         })
     }
-    update(filter={},property={},{multiple = true} = {multiple = true}){
+    update(filter={},property={},{multiple = true} = {}){
         const model = this.schemaModel
         return new Promise((resolve, reject)=>{
             model[multiple?"updateMany":"updateOne"](filter,property,(err, response)=>{
@@ -68,7 +68,7 @@ class DBModel {
             })
         })
     }
-    delete(filters={},{multiple = true} = {multiple = true}){
+    delete(filters={},{multiple = true} = {}){
         const model = this.schemaModel
         return middleware(filters,(filter,{resolve,reject})=>{
             model[multiple?"deleteMany":"deleteOne"](filter,(err, response)=>{
