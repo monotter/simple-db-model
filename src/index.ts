@@ -68,10 +68,3 @@ export default class DBModel<schema> {
         })
     }
 }
-
-const PersonModel = new DBModel("Person", {
-    Name: String,
-    Surname: String,
-    Age: Number
-}, undefined)
-PersonModel.select()
