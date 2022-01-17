@@ -1,9 +1,8 @@
 {
     "name": "simple-db-model",
-    "version": "1.2.3",
+    "version": "1.2.2",
     "description": "SimpleDBModel is a NodeJS library for manipulating MongoDB with Mongoose",
-    "main": "./lib/cjs/index.js",
-    "module": "./lib/esm/index.js",
+    "main": "./lib/index.js",
     "files": [
         "lib/"
     ],
@@ -19,8 +18,7 @@
         "url": "https://github.com/monotter/simple-db-model/issues"
     },
     "scripts": {
-        "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-        "prepublish": "npm run tsc"
+        "tsc": "tsc -p tsconfig.json"
     },
     "license": "MIT",
     "keywords": [

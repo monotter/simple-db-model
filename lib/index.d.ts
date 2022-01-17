@@ -1,4 +1,4 @@
-export default class DBModel<schema> {
+declare class DBModel<schema> {
     schemaModel: any;
     constructor(collectionName: string, schema: schema, mongoose: any);
     select(filters?: Partial<schema>, options?: {
@@ -18,3 +18,4 @@ export default class DBModel<schema> {
     }): Promise<unknown>;
     count(filters?: Partial<schema>): Promise<unknown>;
 }
+export = DBModel;

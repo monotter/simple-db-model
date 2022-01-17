@@ -15,7 +15,7 @@ function middleware<T>(data: any, callback: (data: any, { resolve, reject }: { r
         }
     })
 }
-export default class DBModel<schema> {
+class DBModel<schema> {
     public schemaModel: any
     constructor(collectionName: string, schema: schema, mongoose: any) {
         this.schemaModel = mongoose.model(collectionName, new mongoose.Schema(schema, { versionKey: false }), collectionName)
@@ -68,3 +68,4 @@ export default class DBModel<schema> {
         })
     }
 }
+export = DBModel
